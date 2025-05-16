@@ -1,5 +1,5 @@
 const CACHE_NAME = "Contagem GTA VI";
-const urlsToCache = ["index.html", "manifest.json", "icons/icon-192.png", "icons/icon-512.png"];
+const urlsToCache = ["index.html", "manifest.json", "icons/LogoGTA6.png", "icons/LogoGTA6.png"];
 
 // Instala e adiciona ao cache
 self.addEventListener("install", event => {
