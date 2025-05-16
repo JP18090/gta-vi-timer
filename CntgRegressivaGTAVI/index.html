@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contagem Regressiva - GTA VI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#a974c5">
+  <style>
+    :root {
+  --cor-primaria: #a974c5;
+  --cor-secundaria: #f5f0ff;
+  --cor-texto: #444;
+  --cor-botao: #ffa4ba;
+  --cor-botao-hover: #f78ca2;
+  --cor-borda: #dec8f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('https://sm.ign.com/ign_br/screenshot/default/gta-6_ha3f.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.70); /* fundo translúcido */
+  padding: 30px 35px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h2 {
+  color: var(--cor-primaria);
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.icon-wrapper img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.contador {
+  font-size: 22px;
+  color: var(--cor-texto);
+  background-color: #f3eaff;
+  border-left: 5px solid var(--cor-primaria);
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+.footer-squares {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 45px);
+  gap: 50px;
+  justify-content: center;
+}
+
+
+@media (max-width: 600px) {
+  .square-grid {
+    grid-template-columns: repeat(2, 80px); 
+    gap: 16px;
+  }
+
+  .square {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+
+.square {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  border: 2px solid var(--cor-borda);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.square:hover {
+  transform: scale(1.1);
+  border-color: var(--cor-primaria);
+  cursor: pointer;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="main-content">
+  <div class="container">
+    <h2>Contagem Regressiva para o GTA VI</h2>
+    <div class="icon-wrapper">
+      <img src="icons/rockstar-iconn.png" alt="Ícone ilustrativo">
+    </div>
+    <div class="contador" id="contador">Carregando...</div>
+  </div>
+
+    <div class="footer-squares">
+    <div class="square-grid">
+      <a href="https://www.rockstargames.com/VI/jason" target="_blank" class="square" style="background-image: url(icons/JasonDoval.png);"></a>
+      <a href="https://www.rockstargames.com/VI/lucia" target="_blank" class="square" style="background-image: url('icons/LuciaCaminos.png');"></a>
+      <a href="https://www.rockstargames.com/VI/cal" target="_blank" class="square" style="background-image: url('icons/CalHampton.png');"></a>
+      <a href="https://www.rockstargames.com/VI/boobie" target="_blank" class="square" style="background-image: url('icons/BoobieIke.png');"></a>
+      <a href="https://www.rockstargames.com/VI/drequan" target="_blank" class="square" style="background-image: url('icons/Dre\'QuanPriest.png');"></a>
+      <a href="https://www.rockstargames.com/VI/dimez" target="_blank" class="square" style="background-image: url('icons/Bae-Luxe.png');"></a>
+      <a href="https://www.rockstargames.com/VI/dimez" target="_blank" class="square" style="background-image: url('icons/Roxy.png');"></a>
+      <a href="http://rockstargames.com/VI/raul" target="_blank" class="square" style="background-image: url('icons/RaulBautista.png');"></a>
+      <a href="https://www.rockstargames.com/VI/brian" target="_blank" class="square" style="background-image: url('icons/BrianHeder.png');"></a>
+    </div>
+  </div>
+</div>
+  <script>
+    const destino = new Date("2026-05-26T00:00:00");
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diferenca = destino - agora;
+
+      if (diferenca <= 0) {
+        document.getElementById("contador").textContent = "Já chegou o dia! 🚀";
+        clearInterval(intervalo);
+        return;
+      }
+
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferenca / 1000) % 60);
+
+      document.getElementById("contador").textContent =
+        `${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    const intervalo = setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
+
+</body>
+</html>
